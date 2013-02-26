@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Pierre Mary | {% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            {% stylesheets 
+                'bundles/portfolio/css/style.css'
+                'bundles/portfolio/css/responsive.css'
+                'bundles/portfolio/css/menu.css'
+            %}
+                <link rel="stylesheet" href="{{ asset_url }}" />
+            {% endstylesheets %}
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        {% block body %}
+
+        <div id="outer-wrap">
+        {% block innerwrap %}<div id="inner-wrap" class="accueil">{% endblock %}
+
+            <header id="top" role="banner">
+                <div class="block">
+                    <img src="../bundles/portfolio/images/logo.png" height="50" alt="SDA" class="block-title">
+                    <a class="nav-btn" id="nav-open-btn" href="#nav">Navigation</a>
+                </div>
+            </header>
+
+            <nav id="nav" role="navigation">
+                <div class="block">
+                    <h2 class="block-title">Chapters</h2>
+                    <ul>
+                            <li class="is-active"><a href="{{ url('pm_portfolio_homepage') }}">Accueil</a></li><!--
+                         --><li><a href="a-propos.html">A propos</a></li><!--
+                         --><li><a href="{{ url('pm_portfolio_creationpage') }}">Portfolio</a></li><!--
+                         --><li><a href="#">Blog</a></li><!--
+                         --><li><a href="#">Tutoriels</a></li><!--
+                         --><li><a href="#">Contact</a></li><!--
+                         --><li><a href="#">Mentions légales</a></li>
+                    </ul>
+                    <a class="close-btn" id="nav-close-btn" href="#top">Retour</a>
+                </div>
+            </nav>
+            
+            {% block content %}
+            {% endblock %}
+
+        </div><!--/#inner-wrap-->
+        </div><!--/#outer-wrap-->
+
+        {% endblock %}
+        {% block javascripts %}
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+            {% javascripts 
+                'bundles/portfolio/js/modernizr.js'
+                'bundles/portfolio/js/masonry.min.js'
+                'bundles/portfolio/js/easing.js'
+                'bundles/portfolio/js/jquery.ui.totop.min.js'
+                'bundles/portfolio/js/main.js'
+            %}
+                <script type="text/javascript" src="{{ asset_url }}"></script>
+            {% endjavascripts %}
+        {% endblock %}
+
+        {% block javascriptcunstom %}
+        {% endblock %}
+    </body>
+</html>

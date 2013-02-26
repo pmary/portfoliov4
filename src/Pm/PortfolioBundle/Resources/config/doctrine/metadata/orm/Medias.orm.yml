@@ -1,0 +1,22 @@
+Medias:
+    type: entity
+    table: medias
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        src:
+            type: string
+            length: 1000
+            fixed: false
+            nullable: false
+        type:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: _type
+    lifecycleCallbacks: {  }

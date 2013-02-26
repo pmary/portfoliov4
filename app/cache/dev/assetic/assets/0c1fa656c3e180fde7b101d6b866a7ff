@@ -1,0 +1,12 @@
+#projects-table{
+	max-width: 960px;
+	background-color: #dddddd;
+	margin-right: auto;
+	margin-left: auto;
+}
+#projects-table span.project-options{
+	display: none;
+}
+#projects-table tr:hover span.project-options{
+	display: block;
+}

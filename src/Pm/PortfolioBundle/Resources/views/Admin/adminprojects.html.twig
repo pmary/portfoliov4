@@ -1,0 +1,36 @@
+{% extends '::admin.html.twig' %}
+{% block title %}Projects management{% endblock %}
+
+{% block innerwrap %}<div id="inner-wrap" class="project-management">{% endblock %}
+
+{% block content %}
+	<div id="main" role="main">
+		<table id="projects-table" class="table table-hover table-bordered table-striped table-condensed">
+			<thead>
+				<tr>
+			    	<th>Titre</th>
+			    	<th>Date</th>
+			    </tr>
+			</thead>
+			<tbody>
+			{% for project in projects %}
+            	<tr>
+		    		<td>
+		    			<a href="{{ asset(path('pm_portfolio_admin_projects_edit',{'id':project.id})) }}">
+		    				{{ project.title }}
+		    			</a>
+		    			 <span class="project-options">
+		    			 	<a href="{{ asset(path('pm_portfolio_admin_projects_edit',{'id':project.id})) }}">Modifier</a>
+		    			 	 <a href="#">Supprimer</a>
+		    			 </span>
+		    		</td>
+		    		<td>{{ project.date|date('d-m-Y') }}</td>
+		    	</tr>
+            {% endfor %}
+            </tbody>
+        </table>
+	</div>
+{% endblock %}
+
+{% block javascriptcunstom %}
+{% endblock %}

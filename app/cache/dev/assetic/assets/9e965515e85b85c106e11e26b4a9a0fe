@@ -1,0 +1,4 @@
+#projects-table{
+	max-width: 960px;
+	background-color: #dddddd;
+}

@@ -1,0 +1,20 @@
+{% extends '::admin.html.twig' %}
+{% block title %}Administration{% endblock %}
+
+{% block innerwrap %}<div id="inner-wrap" class="project-management">{% endblock %}
+
+{% block content %}
+	<div id="main" role="main">
+
+		<form action="{{ path('pm_portfolio_admin_projects_edit',{'id':project.id}) }}" method="post" {{ form_enctype(form) }}>
+		    {{ form_widget(form) }}
+		    {{ form.vars.value.title }}
+
+		    <input type="submit" />
+		</form>
+
+	</div>
+{% endblock %}
+
+{% block javascriptcunstom %}
+{% endblock %}

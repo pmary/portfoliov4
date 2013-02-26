@@ -1,0 +1,27 @@
+{% extends '::base.html.twig' %}
+{% block title %}Portfolio{% endblock %}
+
+{% block content %}
+	<div id="main" role="main">
+	</div>
+{% endblock %}
+{% block javascriptcunstom %}
+	<script>
+        $(function(){
+
+            var maxHeight = 0;
+
+            resizedMain();
+           
+
+            $(window).resize(function() {
+                resizedMain();
+            });
+
+            function resizedMain(){
+                $("#main").css("height",$(window).innerHeight()-$("header").innerHeight());
+            }
+        });
+
+    </script>
+{% endblock %}

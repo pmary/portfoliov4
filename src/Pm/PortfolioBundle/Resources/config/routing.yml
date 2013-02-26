@@ -1,0 +1,23 @@
+pm_portfolio_homepage:
+    pattern:  /
+    defaults: { _controller: PmPortfolioBundle:Portfolio:index }
+
+pm_portfolio_creationpage:
+    pattern:  /portfolio
+    defaults: { _controller: PmPortfolioBundle:Portfolio:portfolio }
+
+pm_portfolio_projectcard:
+    pattern:  /portfolio/{id}
+    defaults: { _controller: PmPortfolioBundle:Portfolio:projectcard }
+
+pm_portfolio_admin_homepage:
+    pattern:  /admin/
+    defaults: { _controller: PmPortfolioBundle:Portfolio:adminhome }
+
+pm_portfolio_admin_projects:
+    pattern:  /admin/projects/
+    defaults: { _controller: PmPortfolioBundle:Portfolio:adminprojects }
+
+pm_portfolio_admin_projects_edit:
+    pattern:  /admin/projects/edit/{id}
+    defaults: { _controller: PmPortfolioBundle:Portfolio:adminprojectsedit }
