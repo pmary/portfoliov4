@@ -103,6 +103,10 @@ class PortfolioController extends Controller
             ->add('description', 'text', array(
                     'label'  => 'Description',
                     'data'  => $project->getDescription(),
+                    'attr' => array(
+                        'class' => 'tinymce',
+                        'data-theme' => 'medium' // simple, advanced, bbcode
+                    )
                 ))
             ->getForm();
 
