@@ -1,11 +1,12 @@
 {% extends '::base.html.twig' %}
+
 {% block title %}Portfolio{% endblock %}
 
 {% block innerwrap %}<div id="inner-wrap" class="portfolio">{% endblock %}
 
 {% block content %}
     <div id="main" role="main">
-        <ul id="portfolio-gallery" class="portfolio-thumbs">
+        <ul id="portfolio-gallery" class="portfolio-thumbs test">
             {% for project in projects %}
               <li class="thumbbox">
                 {% for media in medias %}
@@ -66,7 +67,7 @@
         
         // FOnctions resize thumb
         $(function(){
-
+            horizontalCenter();
             var maxWidth = 0;
             
             setTimeout(resizedImages(),5000);
@@ -100,7 +101,16 @@
             function resizedMain(){
                 $("#main").css("height",$(window).innerHeight()-$("header").innerHeight());
             }
-        });
+            function horizontalCenter(){
+                $('.loader').css("marginTop",$(window).innerHeight()/2);
+                $('.loader').css("display",'block');
+            }
 
+            $(window).load(function () {
+              $('#main').css('display','block');
+              $('.loader').css('display','none');
+            });
+        });
+        
     </script>
 {% endblock %}

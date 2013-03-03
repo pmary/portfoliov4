@@ -37,15 +37,19 @@ class __TwigTemplate_069d6587b2b75d37e534d89f5b8321bf extends Twig_Template
     {
         // line 5
         echo "\t<div id=\"main\" role=\"main\">
+        <canvas id=\"cvs\"></canvas>
 \t</div>
 ";
     }
 
-    // line 8
+    // line 9
     public function block_javascriptcunstom($context, array $blocks = array())
     {
-        // line 9
-        echo "\t<script>
+        // line 10
+        echo "    <script src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(""), "html", null, true);
+        echo "bundles/portfolio/js/snow.js\"></script>
+\t<script>
         \$(function(){
 
             var maxHeight = 0;
@@ -60,6 +64,15 @@ class __TwigTemplate_069d6587b2b75d37e534d89f5b8321bf extends Twig_Template
             function resizedMain(){
                 \$(\"#main\").css(\"height\",\$(window).innerHeight()-\$(\"header\").innerHeight());
             }
+            function horizontalCenter(){
+                \$('.loader').css(\"marginTop\",\$(window).innerHeight()/2);
+                \$('.loader').css(\"display\",'block');
+            }
+
+            \$(window).load(function () {
+              \$('#main').css('display','block');
+              \$('.loader').css('display','none');
+            });
         });
 
     </script>
@@ -78,6 +91,6 @@ class __TwigTemplate_069d6587b2b75d37e534d89f5b8321bf extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  48 => 9,  45 => 8,  39 => 5,  36 => 4,  30 => 2,);
+        return array (  49 => 10,  46 => 9,  39 => 5,  36 => 4,  30 => 2,);
     }
 }

@@ -3,9 +3,11 @@
 
 {% block content %}
 	<div id="main" role="main">
+        <canvas id="cvs"></canvas>
 	</div>
 {% endblock %}
 {% block javascriptcunstom %}
+    <script src="{{ asset('')}}bundles/portfolio/js/snow.js"></script>
 	<script>
         $(function(){
 
@@ -21,6 +23,15 @@
             function resizedMain(){
                 $("#main").css("height",$(window).innerHeight()-$("header").innerHeight());
             }
+            function horizontalCenter(){
+                $('.loader').css("marginTop",$(window).innerHeight()/2);
+                $('.loader').css("display",'block');
+            }
+
+            $(window).load(function () {
+              $('#main').css('display','block');
+              $('.loader').css('display','none');
+            });
         });
 
     </script>

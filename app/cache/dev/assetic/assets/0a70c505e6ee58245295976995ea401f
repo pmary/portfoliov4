@@ -1,0 +1,252 @@
+/*RESET*/
+@charset "UTF-8";
+@-ms-viewport{width: device-width;}
+@viewport{width: device-width;}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden]{display: none;}
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+body{margin: 0;}
+a:focus{outline: thin dotted;}
+a:active,a:hover{outline: 0;}
+h1{font-size: 2em;}
+abbr[title]{border-bottom: 1px dotted;}
+b,strong{font-weight: bold;}
+dfn{font-style: italic;}
+mark{background: #ff0;color: #000;}
+code,kbd,pre,samp{font-family: monospace, serif;font-size: 1em;}
+pre{white-space: pre;white-space: pre-wrap;word-wrap: break-word;}
+q{quotes: "\201C" "\201D" "\2018" "\2019";}
+small{font-size: 80%;}
+sub,sup{font-size: 75%;line-height: 0;position: relative;vertical-align: baseline;}
+sup{top: -0.5em;}
+sub{bottom: -0.25em;}
+img{border: 0;}
+svg:not(:root){overflow: hidden;}
+figure{margin: 0;}
+fieldset{border: 1px solid silver;margin: 0 2px;padding: 0.35em 0.625em 0.75em;}
+legend{border: 0;padding: 0;}
+button,input,select,textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+}
+button,input{line-height: normal;}
+button,html input[type="button"],input[type="reset"],input[type="submit"]{
+  -webkit-appearance: button;
+  cursor: pointer;
+}
+button[disabled],input[disabled]{cursor: default;}
+input[type="checkbox"],input[type="radio"]{box-sizing: border-box;padding: 0;}
+input[type="search"]{
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
+}
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}button::-moz-focus-inner,input::-moz-focus-inner {border: 0;padding: 0;}
+textarea {overflow: auto;vertical-align: top;}
+table {border-collapse: collapse;border-spacing: 0;}
+ul, ol {padding: 0;list-style: none;}
+h1, h2, h3, h4, h5, h6, p, ul, ol {margin: 0;}
+a{text-decoration: none;}
+audio,canvas,video {display: inline-block;}
+
+body{line-height:1;font-family:'Oxygen', sans-serif;position: relative;background-image: url('../../bundles/portfolio/images/bg-portfolio.png');background-color: #171717;}
+.portfolio{display: none;}
+/* Bouton return to top*/
+#toTop {
+	display:none;
+	text-decoration:none;
+	position:fixed;
+	right:10px;
+	overflow:hidden;
+	width:51px;
+	height:51px;
+	border:none;
+	text-indent:100%;
+	background:url(../../bundles/portfolio/images/ui.totop.png) no-repeat left top;
+	z-index: 99;
+}
+
+#toTopHover {
+	background:url(../../bundles/portfolio/images/ui.totop.png) no-repeat left -51px;
+	width:51px;
+	height:51px;
+	display:block;
+	overflow:hidden;
+	float:left;
+	opacity: 0;
+	-moz-opacity: 0;
+	filter:alpha(opacity=0);
+}
+
+#toTop:active, #toTop:focus {
+	outline:none;
+}
+
+/*-----------------------  Accueil  -----------------------*/
+.accueil{background: url('../../bundles/portfolio/images/montagne-hiver.jpg');background-position: top center;background-repeat: no-repeat;}
+canvas {
+    position: absolute;
+}
+
+/*-----------------------  Portfolio  -----------------------*/
+.portfolio{
+}
+#portfolio-gallery{
+	z-index: 10;
+	position: relative;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+/* Hover effect */
+.portfolio-thumbs {
+}
+.portfolio-thumbs li {
+}
+.portfolio-thumbs li a,
+.portfolio-thumbs li a img {
+	display: block;
+	position: relative;
+}
+.portfolio-thumbs li a {
+	overflow: hidden;
+}
+.portfolio-thumbs li a div {
+	position: absolute;
+	background: #333;
+	background: rgba(30,30,30,0.7);
+	width: 100%;
+	height: 100%;
+}
+.portfolio-thumbs li a div span {
+	display: block;
+	padding: 10px 0;
+	margin: 40px 20px 20px 20px;
+	text-transform: uppercase;
+	font-weight: normal;
+	color: rgba(255,255,255,0.9);
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+	border-bottom: 1px solid rgba(255,255,255,0.5);
+}
+.portfolio-thumbs li a div span {line-height: 25px;}
+.portfolio-thumbs li a div span:last-child {
+	font-style: italic;
+	text-transform: none;
+	border: none;
+}
+.portfolio-thumbs .thumb{
+}
+/*
+#portfolio-gallery .thumbbox a img.thumb{
+	max-width: 360px;
+}
+*/
+
+/*-----------------------  Fiche créa  -----------------------*/
+#banner{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+#fiche{
+	padding-top: 20px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 20px;
+
+	text-align: center;
+
+	padding-bottom: 60px;
+
+}
+#fiche #project-image{
+	margin-bottom: 20px;
+	max-width: 100%;
+}
+#project-infos{
+	padding-left: 20px;
+}
+#fiche #project-infos h1{
+	text-transform: uppercase;
+	font-weight: lighter;
+	color: #ffffff;
+	margin-bottom: 5px;
+}
+#fiche #project-infos h2{
+	font-weight: lighter;
+	color: #eeeeee;
+	font-style: italic;
+	font-size: 13px;
+	margin-bottom: 20px;
+	line-height: 17px;
+}
+#fiche #project-infos p{
+	position: relative;
+	width: 100%;
+	max-width: 960px;
+	text-align: left;
+	font-weight: lighter;
+	color: #ffffff;
+	line-height: 20px;
+	font-size: 15px;
+
+	margin-left: 50%;
+}
+
+/*-----------------------  Mentions légales  -----------------------*/
+#mentions{
+	position: relative;
+	max-width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+	color: white;
+}
+#mentions h1{margin-bottom: 20px;}
+#mentions p{margin-bottom: 15px;line-height: 20px;}
+
+/*-----------------------  A propos  -----------------------*/
+#a-propos{
+	position: relative;
+	max-width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+	color: white;
+}
+#a-propos h1{margin-bottom: 20px;}
+#a-propos p{margin-bottom: 15px;line-height: 20px;}
+#a-propos #cv-link{}
+
+/*-----------------------  Contact  -----------------------*/
+#contact{
+	position: relative;
+	max-width: 960px;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+	color: white;
+}
+#contact h1{margin-bottom: 20px;}
+#contact p{margin-bottom: 15px;line-height: 20px;}
+#contact .form-contact div { clear: left; margin-bottom: 10px; }
+#contact .form-contact label { float: left; margin-right: 10px; text-align: right; width: 100px; font-weight: bold; vertical-align: top; padding-top: 10px; }
+#contact .form-contact input[type="text"],
+#contact .form-contact input[type="email"]
+    { width: 500px; line-height: 26px; font-size: 20px; min-height: 26px; }
+#contact .form-contact textarea { width: 500px; height: 150px; line-height: 26px; font-size: 20px; }
+#contact .form-contact input[type="submit"] { margin-left: 110px; width: 508px; line-height: 26px; font-size: 20px; min-height: 26px; }
+#contact .form-contact ul li { color: #ff0000; margin-bottom: 5px; }

@@ -1,0 +1,28 @@
+{% extends '::base.html.twig' %}
+{% block title %}Contact{% endblock %}
+
+{% block innerwrap %}<div id="inner-wrap" class="portfolio">{% endblock %}
+
+{% block content %}
+
+<div id="contact">
+	<h1>Contactez-moi</h1>	
+	<p>N'hésitez pas à remplir ce formulaire si vous souhaitez me contacter.</p>
+
+	<form action="{{ path('pm_portfolio_contact') }}" method="post" {{ form_enctype(form) }} class="form-contact">
+        {{ form_errors(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.email) }}
+        {{ form_row(form.subject) }}
+        {{ form_row(form.body) }}
+
+        {{ form_rest(form) }}
+
+        <input type="submit" value="Envoyer !" />
+    </form>
+</div>
+
+{% endblock %}
+{% block javascriptcunstom %}
+{% endblock %}

@@ -6,10 +6,33 @@
 
 {% block content %}
 	<div id="main" role="main">
-
-		<form action="{{ path('pm_portfolio_admin_projects_edit',{'id':project.id}) }}" method="post" {{ form_enctype(form) }}>
+		
+		<!-- Projet -->
+		<form action="{{ path('pm_portfolio_admin_projects_edit',{'id':project.id}) }}" name="project" method="post" enctype="multipart/form-data" {{ form_enctype(form) }}>
 		    {{ form_widget(form) }}
 		    {{ form.vars.value.title }}
+
+		    <select name="form[category1]">
+		    	{% for category in categories %}
+					<option value="{{ category.id }}" {% if project.category1 == category.id  %}selected{% endif %}>{{ category.name }}</option>
+				{% endfor %}
+			</select>
+
+			<select name="form[category2]">
+				{% for category in categories %}
+					<option value="{{ category.id }}" {% if project.category1 == category.id  %}selected{% endif %}>{{ category.name }}</option>
+				{% endfor %}
+			</select>
+
+		    <div><!-- Miniature -->
+		    	<label for="form-miniature" class="required">Miniature</label>
+		    	<input type="file" id="form-miniature" name="form-miniature" required="required" value="{% for data in thumb %}{{ data.src }}{% endfor %}">
+		    </div>
+
+		    <div><!-- Cover -->
+		    	<label for="form-cover" class="required">Couverture</label>
+		    	<input type="file" id="form-cover" name="form-cover" required="required" value="{% for data in cover %}{{ data.src }}{% endfor %}">
+		    </div>
 
 		    <input type="submit" />
 		</form>
@@ -18,5 +41,10 @@
 {% endblock %}
 
 {% block javascriptcunstom %}
+	<script type="text/javascript" src="{{ asset('bundles/admin/js/tiny_mce/tiny_mce.js') }}"></script>
+	<script type="text/javascript">
+		tinyMCE.init({
+		        mode : "textareas"
+		});
+		</script>
 {% endblock %}
-{{ tinymce_init() }}

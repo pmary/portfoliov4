@@ -43,7 +43,7 @@ class Projects
     private $category2;
 
     /**
-     * @var \DateTime
+     * @var \Date
      *
      * @ORM\Column(name="date", type="date", nullable=false)
      */
@@ -85,6 +85,18 @@ class Projects
     private $excerpt;
 
 
+    /**
+     * Set id
+     *
+     * @param string $id
+     * @return Projects
+     */
+    public function setId($id)
+    {
+        $this->title = $id;
+    
+        return $this;
+    }
 
     /**
      * Get id
@@ -168,7 +180,7 @@ class Projects
     /**
      * Set date
      *
-     * @param \DateTime $date
+     * @param \Date $date
      * @return Projects
      */
     public function setDate($date)
@@ -181,7 +193,7 @@ class Projects
     /**
      * Get date
      *
-     * @return \DateTime 
+     * @return \Date 
      */
     public function getDate()
     {

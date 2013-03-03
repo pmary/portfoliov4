@@ -78,6 +78,15 @@
             function resizedHeight(){
                 $('#project-image').css("maxHeight", $(window).innerHeight()-100);
             }
+            function horizontalCenter(){
+                $('.loader').css("marginTop",$(window).innerHeight()/2);
+                $('.loader').css("display",'block');
+            }
+
+            $(window).load(function () {
+              $('#main').css('display','block');
+              $('.loader').css('display','none');
+            });
         });
 
     </script>

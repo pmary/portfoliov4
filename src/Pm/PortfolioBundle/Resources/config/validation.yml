@@ -1,0 +1,7 @@
+Pm\PortfolioBundle\Entity\Projects:
+    properties:
+        title:
+            - NotBlank: ~
+        date:
+            - NotBlank: ~
+            - Type: \Date

@@ -44,21 +44,96 @@ class __TwigTemplate_2d01200e67f8879ccabd1e812a16e385 extends Twig_Template
     {
         // line 8
         echo "\t<div id=\"main\" role=\"main\">
-
+\t\t
+\t\t<!-- Projet -->
 \t\t<form action=\"";
-        // line 10
+        // line 11
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("pm_portfolio_admin_projects_edit", array("id" => $this->getAttribute($this->getContext($context, "project"), "id"))), "html", null, true);
-        echo "\" method=\"post\" ";
+        echo "\" name=\"project\" method=\"post\" enctype=\"multipart/form-data\" ";
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'enctype');
         echo ">
 \t\t    ";
-        // line 11
+        // line 12
         echo $this->env->getExtension('form')->renderer->searchAndRenderBlock($this->getContext($context, "form"), 'widget');
         echo "
-\t\t    ";
-        // line 12
-        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute($this->getContext($context, "form"), "vars"), "value"), "title"), "html", null, true);
-        echo "
+
+\t\t    <select name=\"form[category1]\">
+\t\t    \t";
+        // line 15
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "categories"));
+        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+            // line 16
+            echo "\t\t\t\t\t<option value=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "category"), "id"), "html", null, true);
+            echo "\" ";
+            if (($this->getAttribute($this->getContext($context, "project"), "category1") == $this->getAttribute($this->getContext($context, "category"), "id"))) {
+                echo "selected";
+            }
+            echo ">";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "category"), "name"), "html", null, true);
+            echo "</option>
+\t\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        // line 18
+        echo "\t\t\t</select>
+
+\t\t\t<select name=\"form[category2]\">
+\t\t\t\t";
+        // line 21
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "categories"));
+        foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
+            // line 22
+            echo "\t\t\t\t\t<option value=\"";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "category"), "id"), "html", null, true);
+            echo "\" ";
+            if (($this->getAttribute($this->getContext($context, "project"), "category1") == $this->getAttribute($this->getContext($context, "category"), "id"))) {
+                echo "selected";
+            }
+            echo ">";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "category"), "name"), "html", null, true);
+            echo "</option>
+\t\t\t\t";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
+        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        // line 24
+        echo "\t\t\t</select>
+
+\t\t    <div><!-- Miniature -->
+\t\t    \t<label for=\"form-miniature\" class=\"required\">Miniature</label>
+\t\t    \t<input type=\"file\" id=\"form-miniature\" name=\"form-miniature\" required=\"required\" value=\"";
+        // line 28
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "thumb"));
+        foreach ($context['_seq'] as $context["_key"] => $context["data"]) {
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "data"), "src"), "html", null, true);
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['data'], $context['_parent'], $context['loop']);
+        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        echo "\">
+\t\t    </div>
+
+\t\t    <div><!-- Cover -->
+\t\t    \t<label for=\"form-cover\" class=\"required\">Couverture</label>
+\t\t    \t<input type=\"file\" id=\"form-cover\" name=\"form-cover\" required=\"required\" value=\"";
+        // line 33
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getContext($context, "cover"));
+        foreach ($context['_seq'] as $context["_key"] => $context["data"]) {
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "data"), "src"), "html", null, true);
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['data'], $context['_parent'], $context['loop']);
+        $context = array_merge($_parent, array_intersect_key($context, $_parent));
+        echo "\">
+\t\t    </div>
 
 \t\t    <input type=\"submit\" />
 \t\t</form>
@@ -67,9 +142,19 @@ class __TwigTemplate_2d01200e67f8879ccabd1e812a16e385 extends Twig_Template
 ";
     }
 
-    // line 20
+    // line 42
     public function block_javascriptcunstom($context, array $blocks = array())
     {
+        // line 43
+        echo "\t<script type=\"text/javascript\" src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/admin/js/tiny_mce/tiny_mce.js"), "html", null, true);
+        echo "\"></script>
+\t<script type=\"text/javascript\">
+\t\ttinyMCE.init({
+\t\t        mode : \"textareas\"
+\t\t});
+\t\t</script>
+";
     }
 
     public function getTemplateName()
@@ -84,6 +169,6 @@ class __TwigTemplate_2d01200e67f8879ccabd1e812a16e385 extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  71 => 20,  60 => 12,  56 => 11,  50 => 10,  46 => 8,  43 => 7,  37 => 5,  31 => 3,);
+        return array (  149 => 43,  146 => 42,  127 => 33,  112 => 28,  106 => 24,  91 => 22,  87 => 21,  82 => 18,  67 => 16,  63 => 15,  57 => 12,  51 => 11,  46 => 8,  43 => 7,  37 => 5,  31 => 3,);
     }
 }

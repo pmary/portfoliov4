@@ -10,6 +10,20 @@ pm_portfolio_projectcard:
     pattern:  /portfolio/{id}
     defaults: { _controller: PmPortfolioBundle:Portfolio:projectcard }
 
+pm_portfolio_contact:
+    pattern:  /contact
+    defaults: { _controller: PmPortfolioBundle:Portfolio:contact }
+    requirements:
+        _method:  GET
+
+pm_portfolio_mentions:
+    pattern:  /mentions
+    defaults: { _controller: PmPortfolioBundle:Portfolio:mentions }
+
+pm_portfolio_apropos:
+    pattern:  /a-propos
+    defaults: { _controller: PmPortfolioBundle:Portfolio:apropos }
+
 pm_portfolio_admin_homepage:
     pattern:  /admin/
     defaults: { _controller: PmPortfolioBundle:Portfolio:adminhome }

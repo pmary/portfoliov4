@@ -12,6 +12,8 @@
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
         {% endblock %}
+        {% block javascripttop %}
+        {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
@@ -32,17 +34,26 @@
                     <h2 class="block-title">Chapters</h2>
                     <ul>
                             <li class="is-active"><a href="{{ url('pm_portfolio_homepage') }}">Accueil</a></li><!--
-                         --><li><a href="a-propos.html">A propos</a></li><!--
                          --><li><a href="{{ url('pm_portfolio_creationpage') }}">Portfolio</a></li><!--
-                         --><li><a href="#">Blog</a></li><!--
-                         --><li><a href="#">Tutoriels</a></li><!--
-                         --><li><a href="#">Contact</a></li><!--
-                         --><li><a href="#">Mentions légales</a></li>
+                         --><li><a href="{{ url('pm_portfolio_apropos') }}">A propos</a></li><!--
+                         --><li><a href="{{ url('pm_portfolio_contact') }}">Contact</a></li><!--
+                         --><li><a class="external-link" href="http://www.stonedigitalart.com/" target="_blank">Blog/Tutoriels</a></li><!--
+                         --><li><a href="{{ url('pm_portfolio_mentions') }}">Mentions légales</a></li>
                     </ul>
                     <a class="close-btn" id="nav-close-btn" href="#top">Retour</a>
                 </div>
             </nav>
-            
+            <h1 class="loader">
+                <span>C</span>
+                <span>H</span>
+                <span>A</span>
+                <span>R</span>
+                <span>E</span>
+                <span>G</span>
+                <span>E</span>
+                <span>N</span>
+                <span>T</span>
+            </h1>
             {% block content %}
             {% endblock %}
 
@@ -53,11 +64,12 @@
         {% block javascripts %}
             <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
             {% javascripts 
+                'bundles/portfolio/js/prefixfree.min.js'
                 'bundles/portfolio/js/modernizr.js'
                 'bundles/portfolio/js/masonry.min.js'
                 'bundles/portfolio/js/easing.js'
                 'bundles/portfolio/js/jquery.ui.totop.min.js'
-                'bundles/portfolio/js/main.js'
+                'bundles/portfolio/js/main.js'                
             %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}

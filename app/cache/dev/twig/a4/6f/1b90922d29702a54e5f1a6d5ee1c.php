@@ -27,45 +27,45 @@ class __TwigTemplate_a46f1b90922d29702a54e5f1a6d5ee1c extends Twig_Template
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 2
+    // line 3
     public function block_title($context, array $blocks = array())
     {
         echo "Portfolio";
     }
 
-    // line 4
+    // line 5
     public function block_innerwrap($context, array $blocks = array())
     {
         echo "<div id=\"inner-wrap\" class=\"portfolio\">";
     }
 
-    // line 6
+    // line 7
     public function block_content($context, array $blocks = array())
     {
-        // line 7
+        // line 8
         echo "    <div id=\"main\" role=\"main\">
-        <ul id=\"portfolio-gallery\" class=\"portfolio-thumbs\">
+        <ul id=\"portfolio-gallery\" class=\"portfolio-thumbs test\">
             ";
-        // line 9
+        // line 10
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getContext($context, "projects"));
         foreach ($context['_seq'] as $context["_key"] => $context["project"]) {
-            // line 10
+            // line 11
             echo "              <li class=\"thumbbox\">
                 ";
-            // line 11
+            // line 12
             $context['_parent'] = (array) $context;
             $context['_seq'] = twig_ensure_traversable($this->getContext($context, "medias"));
             foreach ($context['_seq'] as $context["_key"] => $context["media"]) {
-                // line 12
+                // line 13
                 echo "                  ";
                 if (($this->getAttribute($this->getContext($context, "project"), "thumb") == $this->getAttribute($this->getContext($context, "media"), "id"))) {
-                    // line 13
+                    // line 14
                     echo "                    <a href=\"";
                     echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl($this->env->getExtension('routing')->getPath("pm_portfolio_projectcard", array("id" => $this->getAttribute($this->getContext($context, "project"), "id")))), "html", null, true);
                     echo "\">
                       <img class=\"thumb\" src=\"";
-                    // line 14
+                    // line 15
                     echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(""), "html", null, true);
                     echo "bundles/portfolio/images/medias/";
                     echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "media"), "src"), "html", null, true);
@@ -74,62 +74,62 @@ class __TwigTemplate_a46f1b90922d29702a54e5f1a6d5ee1c extends Twig_Template
                     echo "\">
                       <div>
                         <span>";
-                    // line 16
+                    // line 17
                     echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "project"), "title"), "html", null, true);
                     echo "</span>
                         <span>
                             ";
-                    // line 18
+                    // line 19
                     $context['_parent'] = (array) $context;
                     $context['_seq'] = twig_ensure_traversable($this->getContext($context, "categories"));
                     foreach ($context['_seq'] as $context["_key"] => $context["category"]) {
-                        // line 19
+                        // line 20
                         echo "                                ";
                         if ((($this->getAttribute($this->getContext($context, "category"), "id") == $this->getAttribute($this->getContext($context, "project"), "category1")) || (($this->getAttribute($this->getContext($context, "category"), "id") == $this->getAttribute($this->getContext($context, "project"), "category2")) && ($this->getAttribute($this->getContext($context, "category"), "id") != 0)))) {
-                            // line 20
+                            // line 21
                             echo "                                    ";
                             echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "category"), "name"), "html", null, true);
                             echo "<br>
                                 ";
                         }
-                        // line 22
+                        // line 23
                         echo "                            ";
                     }
                     $_parent = $context['_parent'];
                     unset($context['_seq'], $context['_iterated'], $context['_key'], $context['category'], $context['_parent'], $context['loop']);
                     $context = array_merge($_parent, array_intersect_key($context, $_parent));
-                    // line 23
+                    // line 24
                     echo "                        </span>
                     </div>
                     </a>
                   ";
                 }
-                // line 27
+                // line 28
                 echo "                ";
             }
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['media'], $context['_parent'], $context['loop']);
             $context = array_merge($_parent, array_intersect_key($context, $_parent));
-            // line 28
+            // line 29
             echo "              </li>
             ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['project'], $context['_parent'], $context['loop']);
         $context = array_merge($_parent, array_intersect_key($context, $_parent));
-        // line 30
+        // line 31
         echo "        </ul>
     </div>
 ";
     }
 
-    // line 34
+    // line 35
     public function block_javascriptcunstom($context, array $blocks = array())
     {
-        // line 35
+        // line 36
         echo "    <!-- Hover effect -->
     <script src=\"";
-        // line 36
+        // line 37
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(""), "html", null, true);
         echo "bundles/portfolio/js/jquery.hoverdir.js\"></script>
     <script>
@@ -164,7 +164,7 @@ class __TwigTemplate_a46f1b90922d29702a54e5f1a6d5ee1c extends Twig_Template
         
         // FOnctions resize thumb
         \$(function(){
-
+            horizontalCenter();
             var maxWidth = 0;
             
             setTimeout(resizedImages(),5000);
@@ -198,8 +198,17 @@ class __TwigTemplate_a46f1b90922d29702a54e5f1a6d5ee1c extends Twig_Template
             function resizedMain(){
                 \$(\"#main\").css(\"height\",\$(window).innerHeight()-\$(\"header\").innerHeight());
             }
-        });
+            function horizontalCenter(){
+                \$('.loader').css(\"marginTop\",\$(window).innerHeight()/2);
+                \$('.loader').css(\"display\",'block');
+            }
 
+            \$(window).load(function () {
+              \$('#main').css('display','block');
+              \$('.loader').css('display','none');
+            });
+        });
+        
     </script>
 ";
     }
@@ -216,6 +225,6 @@ class __TwigTemplate_a46f1b90922d29702a54e5f1a6d5ee1c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  133 => 36,  130 => 35,  127 => 34,  121 => 30,  114 => 28,  108 => 27,  102 => 23,  96 => 22,  90 => 20,  87 => 19,  83 => 18,  78 => 16,  69 => 14,  64 => 13,  61 => 12,  57 => 11,  54 => 10,  50 => 9,  46 => 7,  43 => 6,  37 => 4,  31 => 2,);
+        return array (  133 => 37,  130 => 36,  127 => 35,  121 => 31,  114 => 29,  108 => 28,  102 => 24,  96 => 23,  90 => 21,  87 => 20,  83 => 19,  78 => 17,  69 => 15,  64 => 14,  61 => 13,  57 => 12,  54 => 11,  50 => 10,  46 => 8,  43 => 7,  37 => 5,  31 => 3,);
     }
 }
