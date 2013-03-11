@@ -4,13 +4,14 @@
         <meta charset="UTF-8" />
         <title>Pierre Mary | {% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
-            {% stylesheets 
+            {% stylesheets
                 'bundles/portfolio/css/style.css'
                 'bundles/portfolio/css/responsive.css'
                 'bundles/portfolio/css/menu.css'
             %}
                 <link rel="stylesheet" href="{{ asset_url }}" />
             {% endstylesheets %}
+            <script type="{ asset('')}}bundles/portfolio/js/hinclude.js"></script>
         {% endblock %}
         {% block javascripttop %}
         {% endblock %}
@@ -18,13 +19,13 @@
     </head>
     <body>
         {% block body %}
-
+        
         <div id="outer-wrap">
-        {% block innerwrap %}<div id="inner-wrap" class="accueil">{% endblock %}
+        {% block innerwrap %}<div id="inner-wrap">{% endblock %}
 
             <header id="top" role="banner">
                 <div class="block">
-                    <img src="../bundles/portfolio/images/logo.png" height="50" alt="SDA" class="block-title">
+                    <img src="{{ asset('')}}/bundles/portfolio/images/logo.png" height="50" alt="SDA" class="block-title">
                     <a class="nav-btn" id="nav-open-btn" href="#nav">Navigation</a>
                 </div>
             </header>
@@ -33,12 +34,12 @@
                 <div class="block">
                     <h2 class="block-title">Chapters</h2>
                     <ul>
-                            <li class="is-active"><a href="{{ url('pm_portfolio_homepage') }}">Accueil</a></li><!--
-                         --><li><a href="{{ url('pm_portfolio_creationpage') }}">Portfolio</a></li><!--
-                         --><li><a href="{{ url('pm_portfolio_apropos') }}">A propos</a></li><!--
-                         --><li><a href="{{ url('pm_portfolio_contact') }}">Contact</a></li><!--
+                            <li class="is-active"><a onclick="loadViewAjax('pm_portfolio_homepage','Pierre Mary | Accueil','/')">Accueil</a></li><!--
+                         --><li><a onclick="loadViewAjax('pm_portfolio_creationpage','Pierre Mary | Portfolio','portfolio')">Portfolio</a></li><!--
+                         --><li><a onclick="loadViewAjax('pm_portfolio_apropos','Pierre Mary | A propos','a-propos')">A propos</a></li><!--
+                         --><li><a onclick="loadViewAjax('pm_portfolio_contact','Pierre Mary | Contact','contact')">Contact</a></li><!--
                          --><li><a class="external-link" href="http://www.stonedigitalart.com/" target="_blank">Blog/Tutoriels</a></li><!--
-                         --><li><a href="{{ url('pm_portfolio_mentions') }}">Mentions légales</a></li>
+                         --><li><a onclick="loadViewAjax('pm_portfolio_mentions','Pierre Mary | Mentions légales','mentions')">Mentions légales</a></li>
                     </ul>
                     <a class="close-btn" id="nav-close-btn" href="#top">Retour</a>
                 </div>
@@ -54,8 +55,10 @@
                 <span>N</span>
                 <span>T</span>
             </h1>
-            {% block content %}
-            {% endblock %}
+            <div id="loading-zone">
+                {% block content %}
+                {% endblock %}
+            </div>
 
         </div><!--/#inner-wrap-->
         </div><!--/#outer-wrap-->
@@ -66,13 +69,95 @@
             {% javascripts 
                 'bundles/portfolio/js/prefixfree.min.js'
                 'bundles/portfolio/js/modernizr.js'
-                'bundles/portfolio/js/masonry.min.js'
                 'bundles/portfolio/js/easing.js'
                 'bundles/portfolio/js/jquery.ui.totop.min.js'
-                'bundles/portfolio/js/main.js'                
+                'bundles/portfolio/js/main.js'               
             %}
                 <script type="text/javascript" src="{{ asset_url }}"></script>
             {% endjavascripts %}
+            <script>
+                /****
+                // Gestion de l'historique pour les changements d'adresse
+                ****/
+                var curentHtml = $("div#loading-zone").html();
+                var curentPageTitle = document.title;
+                window.history.pushState({"html":curentHtml,"pageTitle":curentPageTitle});
+
+                /****
+                // Gestion des changements d'adresse en Ajax
+                ****/        
+                function loadViewAjax(route,pagetitle,url,id){
+                    $("div#loading-zone").html('');
+                    $('#inner-wrap').removeClass();
+                    $('.loader').css('display','block');
+
+                    switch(route){
+                        case 'pm_portfolio_homepage':
+                            path = "{{ path('pm_portfolio_homepage_ajax') }}";
+                            break;
+                        case 'pm_portfolio_creationpage':
+                            path = "{{ path('pm_portfolio_creationpage_ajax') }}";
+                            break;
+                        case 'pm_portfolio_projectcard':
+                            var path = "{{ path('pm_portfolio_projectcard_ajax', { 'id': "id" }) }}";
+                            path = path.replace("id", id);
+                            break;
+                        case 'pm_portfolio_apropos':
+                            path = "{{ path('pm_portfolio_apropos_ajax') }}";
+                            break;
+                        case 'pm_portfolio_contact':
+                            path = "{{ path('pm_portfolio_contact_ajax') }}";
+                            break;
+                        case 'pm_portfolio_mentions':
+                            path = "{{ path('pm_portfolio_mentions_ajax') }}";
+                            break;
+                    }
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: path,
+                        cache: "true",
+                        dataType: "html",
+                        success: function(result){
+                            $('.loader').css('display','none');
+                            $("div#loading-zone").append(result);
+                            document.title = pagetitle;
+                            //window.history.pushState({"pageTitle":pagetitle},"", url);
+                            window.history.pushState({"html":result,"pageTitle":pagetitle},"", url);
+                            $(document).ready(function() {
+                            var $container = $('#portfolio-gallery');
+
+                            $container.imagesLoaded( function(){
+                              $container.masonry({
+                                itemSelector : '.thumbbox'
+                              });
+                              $('#portfolio-gallery').masonry('reloadItems');
+                            });
+                        });
+                        },
+                        error: function(result) {
+                        }
+                    });
+                }
+                window.onpopstate = function(e){
+                    if(e.state){
+                        document.getElementById("loading-zone").innerHTML = e.state.html;
+                        document.title = e.state.pageTitle;
+                        $('#main').css('display','block');
+                        $(document).ready(function() {
+                            var $container = $('#portfolio-gallery');
+
+                            $container.imagesLoaded( function(){
+                              $container.masonry({
+                                itemSelector : '.thumbbox'
+                              });
+                              $('#portfolio-gallery').masonry('reloadItems');
+                            });
+                        });
+                    }
+                };
+                
+            </script>
         {% endblock %}
 
         {% block javascriptcunstom %}

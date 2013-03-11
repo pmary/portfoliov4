@@ -39,11 +39,15 @@ class __TwigTemplate_d946164f07473b7dbabdf214a216bbfe extends Twig_Template
         echo "<div id=\"inner-wrap\" class=\"portfolio\">";
     }
 
-    // line 6
+    // line 5
     public function block_content($context, array $blocks = array())
     {
-        // line 7
+        // line 6
         echo "<div id=\"a-propos\">
+\t<div id=\"sidebar\">
+\t\t
+\t</div>
+
 \t<h1>A propos de moi</h1>
 
 \t<p>
@@ -54,31 +58,37 @@ class __TwigTemplate_d946164f07473b7dbabdf214a216bbfe extends Twig_Template
 \t<p>N'hésitre pas à me suivre:</p>
 \t<ul>
 \t\t<li><a href=\"http://twitter.com/DigitalArtStone\"><img src=\"";
-        // line 17
+        // line 20
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(""), "html", null, true);
         echo "bundles/portfolio/images/\"></a></li>
 \t\t<li><a href=\"http://lnkd.in/dzVJ_i\"><img src=\"";
-        // line 18
+        // line 21
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(""), "html", null, true);
         echo "bundles/portfolio/images/\"></a></li>
 \t</ul>
 
 \t<p><a href=\"\"><img src=\"";
-        // line 21
+        // line 24
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(""), "html", null, true);
         echo "bundles/portfolio/\">Ou à me contacter</a></p>
 
 \t<p><a id=\"cv-link\" href=\"";
-        // line 23
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(""), "html", null, true);
         echo "bundles/portfolio/\">Télécharger mon CV</a></p>
 </div>
 ";
     }
 
-    // line 26
+    // line 29
     public function block_javascriptcunstom($context, array $blocks = array())
     {
+        // line 30
+        echo "<script type=\"{ asset('')}}bundles/portfolio/js/hinclude.js\"></script>
+<script>
+\t
+</script>
+";
     }
 
     public function getTemplateName()
@@ -93,6 +103,6 @@ class __TwigTemplate_d946164f07473b7dbabdf214a216bbfe extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  80 => 26,  73 => 23,  68 => 21,  62 => 18,  58 => 17,  46 => 7,  43 => 6,  37 => 4,  31 => 2,);
+        return array (  87 => 30,  84 => 29,  77 => 26,  72 => 24,  66 => 21,  62 => 20,  46 => 6,  43 => 5,  37 => 4,  31 => 2,);
     }
 }

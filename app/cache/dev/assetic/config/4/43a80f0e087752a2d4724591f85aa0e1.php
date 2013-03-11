@@ -74,24 +74,23 @@ return array (
       ),
     ),
   ),
-  'f2964f0' => 
+  '5b71500' => 
   array (
     0 => 
     array (
       0 => 'bundles/portfolio/js/prefixfree.min.js',
       1 => 'bundles/portfolio/js/modernizr.js',
-      2 => 'bundles/portfolio/js/masonry.min.js',
-      3 => 'bundles/portfolio/js/easing.js',
-      4 => 'bundles/portfolio/js/jquery.ui.totop.min.js',
-      5 => 'bundles/portfolio/js/main.js',
+      2 => 'bundles/portfolio/js/easing.js',
+      3 => 'bundles/portfolio/js/jquery.ui.totop.min.js',
+      4 => 'bundles/portfolio/js/main.js',
     ),
     1 => 
     array (
     ),
     2 => 
     array (
-      'output' => '_controller/js/f2964f0.js',
-      'name' => 'f2964f0',
+      'output' => '_controller/js/5b71500.js',
+      'name' => '5b71500',
       'debug' => NULL,
       'combine' => NULL,
       'vars' => 

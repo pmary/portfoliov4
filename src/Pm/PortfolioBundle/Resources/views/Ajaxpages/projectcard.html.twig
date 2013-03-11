@@ -1,0 +1,61 @@
+    <div id="main" role="main">
+        
+        <section id="fiche">
+            {% for coverdate in cover %}
+            <img id="project-image" src="{{ asset('')}}bundles/portfolio/images/medias/{{ coverdate.src }}" alt="{{ project.title }}">
+            {% endfor %}
+           
+            <div id="project-infos">
+                <h1>{{ project.title }}</h1>
+                <h2>
+                    {% for category in categories %}
+                        {{ category.name }} 
+                    {% endfor %}
+                     - {{ project.date|date('d-m-Y') }}
+                     - {{ project.software }}
+                 </h2>
+                <p id="description">
+                    {{ project.description }}
+                </p>
+            </div>
+        </section>
+        
+    </div>
+
+    <!-- Hover effect -->
+    <script src="{{ asset('')}}bundles/portfolio/js/jquery.hoverdir.js"></script>
+    <script>
+        //Return to top
+        $(document).ready(function() {
+            $().UItoTop({ easingType: 'easeOutQuart' });
+        });
+        
+        // FOnctions resize thumb
+        $(function(){
+
+            centered();
+            resizedHeight();
+
+            $(window).resize(function() {
+                centered();
+                resizedHeight();
+            });
+
+
+            function centered(){
+                $("#description").css("left",-$("#description").innerWidth()/2);
+            }
+
+            function resizedHeight(){
+                $('#project-image').css("maxHeight", $(window).innerHeight()-100);
+            }
+            function horizontalCenter(){
+                $('.loader').css("marginTop",$(window).innerHeight()/2);
+                $('.loader').css("display",'block');
+            }
+
+        });
+        $('#inner-wrap').removeClass();
+        $('#inner-wrap').addClass('portfolio');
+        $('#main').css('display','block');
+    </script>

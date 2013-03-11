@@ -11,7 +11,7 @@
               <li class="thumbbox">
                 {% for media in medias %}
                   {% if project.thumb == media.id %}
-                    <a href="{{ asset(path('pm_portfolio_projectcard',{'id':project.id})) }}">
+                    <a onclick="loadViewAjax('pm_portfolio_projectcard','Pierre Mary | {{ project.title }}','portfolio/{{ project.id }}', '{{ project.id }}')">
                       <img class="thumb" src="{{ asset('')}}bundles/portfolio/images/medias/{{ media.src }}" alt="{{ project.title }}">
                       <div>
                         <span>{{ project.title }}</span>
@@ -33,7 +33,7 @@
 {% endblock %}
 
 {% block javascriptcunstom %}
-    <!-- Hover effect -->
+    <script src="{{ asset('')}}bundles/portfolio/js/masonry.min.js"></script>
     <script src="{{ asset('')}}bundles/portfolio/js/jquery.hoverdir.js"></script>
     <script>
         // Hover effect

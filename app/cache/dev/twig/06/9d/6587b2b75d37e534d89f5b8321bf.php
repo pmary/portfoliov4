@@ -74,7 +74,7 @@ class __TwigTemplate_069d6587b2b75d37e534d89f5b8321bf extends Twig_Template
               \$('.loader').css('display','none');
             });
         });
-
+        \$('#inner-wrap').addClass('accueil');
     </script>
 ";
     }

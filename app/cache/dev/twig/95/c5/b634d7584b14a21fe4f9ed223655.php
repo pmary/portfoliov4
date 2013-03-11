@@ -124,17 +124,7 @@ class __TwigTemplate_95c5b634d7584b14a21fe4f9ed223655 extends Twig_Template
     <script>
         //Return to top
         \$(document).ready(function() {
-            /*
-            var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear' 
-            };
-            */
-            
             \$().UItoTop({ easingType: 'easeOutQuart' });
-            
         });
 
         //Masonry initialisation
@@ -165,6 +155,15 @@ class __TwigTemplate_95c5b634d7584b14a21fe4f9ed223655 extends Twig_Template
             function resizedHeight(){
                 \$('#project-image').css(\"maxHeight\", \$(window).innerHeight()-100);
             }
+            function horizontalCenter(){
+                \$('.loader').css(\"marginTop\",\$(window).innerHeight()/2);
+                \$('.loader').css(\"display\",'block');
+            }
+
+            \$(window).load(function () {
+              \$('#main').css('display','block');
+              \$('.loader').css('display','none');
+            });
         });
 
     </script>

@@ -1,29 +1,51 @@
+# Routing partie publique
 pm_portfolio_homepage:
     pattern:  /
     defaults: { _controller: PmPortfolioBundle:Portfolio:index }
+pm_portfolio_homepage_ajax:
+    pattern:  /0/
+    defaults: { _controller: PmPortfolioBundle:Ajax:index }
 
 pm_portfolio_creationpage:
     pattern:  /portfolio
     defaults: { _controller: PmPortfolioBundle:Portfolio:portfolio }
+pm_portfolio_creationpage_ajax:
+    pattern:  /0/portfolio
+    defaults: { _controller: PmPortfolioBundle:Ajax:portfolio }
 
 pm_portfolio_projectcard:
     pattern:  /portfolio/{id}
     defaults: { _controller: PmPortfolioBundle:Portfolio:projectcard }
+pm_portfolio_projectcard_ajax:
+    pattern:  /0/portfolio/{id}
+    defaults: { _controller: PmPortfolioBundle:Ajax:projectcard }
 
 pm_portfolio_contact:
     pattern:  /contact
     defaults: { _controller: PmPortfolioBundle:Portfolio:contact }
     requirements:
         _method:  GET
+pm_portfolio_contact_ajax:
+    pattern:  /0/contact
+    defaults: { _controller: PmPortfolioBundle:Ajax:contact }
+    requirements:
+        _method:  GET
 
 pm_portfolio_mentions:
     pattern:  /mentions
     defaults: { _controller: PmPortfolioBundle:Portfolio:mentions }
+pm_portfolio_mentions_ajax:
+    pattern:  /0/mentions
+    defaults: { _controller: PmPortfolioBundle:Ajax:mentions }
 
 pm_portfolio_apropos:
     pattern:  /a-propos
     defaults: { _controller: PmPortfolioBundle:Portfolio:apropos }
+pm_portfolio_apropos_ajax:
+    pattern:  /0/a-propos
+    defaults: { _controller: PmPortfolioBundle:Ajax:apropos }
 
+# Routing administration
 pm_portfolio_admin_homepage:
     pattern:  /admin/
     defaults: { _controller: PmPortfolioBundle:Portfolio:adminhome }

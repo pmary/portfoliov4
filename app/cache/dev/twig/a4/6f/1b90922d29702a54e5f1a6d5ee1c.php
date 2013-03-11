@@ -61,9 +61,13 @@ class __TwigTemplate_a46f1b90922d29702a54e5f1a6d5ee1c extends Twig_Template
                 echo "                  ";
                 if (($this->getAttribute($this->getContext($context, "project"), "thumb") == $this->getAttribute($this->getContext($context, "media"), "id"))) {
                     // line 14
-                    echo "                    <a href=\"";
-                    echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl($this->env->getExtension('routing')->getPath("pm_portfolio_projectcard", array("id" => $this->getAttribute($this->getContext($context, "project"), "id")))), "html", null, true);
-                    echo "\">
+                    echo "                    <a onclick=\"loadViewAjax('pm_portfolio_projectcard','Pierre Mary | ";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "project"), "title"), "html", null, true);
+                    echo "','portfolio/";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "project"), "id"), "html", null, true);
+                    echo "', '";
+                    echo twig_escape_filter($this->env, $this->getAttribute($this->getContext($context, "project"), "id"), "html", null, true);
+                    echo "')\">
                       <img class=\"thumb\" src=\"";
                     // line 15
                     echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(""), "html", null, true);
@@ -127,7 +131,9 @@ class __TwigTemplate_a46f1b90922d29702a54e5f1a6d5ee1c extends Twig_Template
     public function block_javascriptcunstom($context, array $blocks = array())
     {
         // line 36
-        echo "    <!-- Hover effect -->
+        echo "    <script src=\"";
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(""), "html", null, true);
+        echo "bundles/portfolio/js/masonry.min.js\"></script>
     <script src=\"";
         // line 37
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl(""), "html", null, true);
@@ -225,6 +231,6 @@ class __TwigTemplate_a46f1b90922d29702a54e5f1a6d5ee1c extends Twig_Template
 
     public function getDebugInfo()
     {
-        return array (  133 => 37,  130 => 36,  127 => 35,  121 => 31,  114 => 29,  108 => 28,  102 => 24,  96 => 23,  90 => 21,  87 => 20,  83 => 19,  78 => 17,  69 => 15,  64 => 14,  61 => 13,  57 => 12,  54 => 11,  50 => 10,  46 => 8,  43 => 7,  37 => 5,  31 => 3,);
+        return array (  139 => 37,  134 => 36,  131 => 35,  125 => 31,  118 => 29,  112 => 28,  106 => 24,  100 => 23,  94 => 21,  91 => 20,  87 => 19,  82 => 17,  73 => 15,  64 => 14,  61 => 13,  57 => 12,  54 => 11,  50 => 10,  46 => 8,  43 => 7,  37 => 5,  31 => 3,);
     }
 }

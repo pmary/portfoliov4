@@ -1,0 +1,89 @@
+<div id="main" role="main">
+    <ul id="portfolio-gallery" class="portfolio-thumbs test">
+        {% for project in projects %}
+            <li class="thumbbox">
+            {% for media in medias %}
+                {% if project.thumb == media.id %}
+                <a onclick="loadViewAjax('pm_portfolio_projectcard','Pierre Mary | {{ project.title }}','portfolio/{{ project.id }}', '{{ project.id }}')">
+                    <img class="thumb" src="{{ asset('')}}bundles/portfolio/images/medias/{{ media.src }}" alt="{{ project.title }}">
+                    <div>
+                    <span>{{ project.title }}</span>
+                    <span>
+                        {% for category in categories %}
+                            {% if category.id == project.category1 or category.id == project.category2 and category.id != 0 %}
+                                {{ category.name }}<br>
+                            {% endif %}
+                        {% endfor %}
+                    </span>
+                </div>
+                </a>
+                {% endif %}
+            {% endfor %}
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+<script src="{{ asset('')}}bundles/portfolio/js/masonry.min.js"></script>
+<script src="{{ asset('')}}bundles/portfolio/js/jquery.hoverdir.js"></script>
+<script>
+    // Hover effect
+    $(' #portfolio-gallery > li ').each( function() { $(this).hoverdir({
+        hoverDelay : 75
+    }); } );
+
+    //Return to top
+    $(document).ready(function() {
+        $().UItoTop({ easingType: 'easeOutQuart' });
+            
+    });
+
+    //Masonry initialisation
+    var $container = $('#portfolio-gallery');
+
+    $container.imagesLoaded( function(){
+        $container.masonry({
+        itemSelector : '.thumbbox'
+        });
+        
+    });
+        
+    // FOnctions resize thumb
+    $(function(){
+        var maxWidth = 0;
+            
+        setTimeout(resizedImages(),5000);
+        
+        $(window).resize(function() {
+            resizedImages();
+        });
+
+        function resizedImages(){            
+            if($('body').innerWidth()<=320){
+                maxWidth = $('body').innerWidth();
+            }else if($('body').innerWidth()<=640){
+                maxWidth = $('body').innerWidth();
+            }else if($('body').innerWidth()<=1280){
+                maxWidth = $('body').innerWidth()/2;
+            }else if($('body').innerWidth()<=1600){
+                maxWidth = $('body').innerWidth()/3;
+            }else if($('body').innerWidth()<=1920){
+                maxWidth = $('body').innerWidth()/4;
+            }else if($('body').innerWidth()<=2560){
+                maxWidth = $('body').innerWidth()/5;
+            }else{
+                maxWidth = $('body').innerWidth()/6;
+            }
+            
+            $(".thumb").css("maxWidth",Math.floor(maxWidth));
+        }
+
+        function resizedMain(){
+            $("#main").css("height",$(window).innerHeight()-$("header").innerHeight());
+        }
+        $('#main').css('display','block');    
+
+        
+    });
+        
+    </script>
